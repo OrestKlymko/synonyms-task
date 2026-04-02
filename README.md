@@ -1,7 +1,7 @@
 # 📖 Synonyms API
 
 ![Java](https://img.shields.io/badge/Java-21-blue?logo=openjdk)
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.x-brightgreen?logo=springboot)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-4.0.5-brightgreen?logo=springboot)
 ![H2](https://img.shields.io/badge/Database-H2-lightgrey)
 ![Flyway](https://img.shields.io/badge/Migrations-Flyway-red)
 ![OpenAPI](https://img.shields.io/badge/Docs-OpenAPI%2FSwagger-orange)
