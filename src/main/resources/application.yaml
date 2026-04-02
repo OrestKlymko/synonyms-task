@@ -14,10 +14,5 @@ spring:
     driver-class-name: org.h2.Driver
     username: sa
     password:
-  mvc:
-    apiversion:
-      use:
-        header: Api-Version
-      default: v1
 server:
   port: 8080
