@@ -1,4 +1,4 @@
-package com.synonyms.task;
+package com.synonyms.task.utils;
 
 public class StringUtils {
 

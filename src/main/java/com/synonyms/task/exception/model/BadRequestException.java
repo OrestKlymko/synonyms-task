@@ -1,4 +1,4 @@
-package com.synonyms.task.exception;
+package com.synonyms.task.exception.model;
 
 public class BadRequestException extends RuntimeException {
     public BadRequestException(String message) {

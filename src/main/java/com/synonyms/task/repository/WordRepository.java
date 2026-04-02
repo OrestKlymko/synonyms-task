@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 @Repository
@@ -18,4 +19,19 @@ public interface WordRepository extends JpaRepository<Word, UUID> {
 
     @Query("SELECT w.word FROM Word w WHERE w.groupId = :groupId AND UPPER(w.word) <> UPPER(:sourceWord)")
     List<String> findAllSynonymsExceptSourceWord(UUID groupId, String sourceWord);
+
+
+    @Query(value = """
+            SELECT * FROM WORDS W
+            WHERE (:cursor IS NULL OR W.ID > :cursor)
+            ORDER BY W.ID
+            LIMIT :limit
+            """, nativeQuery = true)
+    List<Word> getWords(UUID cursor, int limit);
+
+    @Query(value = """
+            SELECT * FROM WORDS W
+                        WHERE W.SYNONYM_GROUP_ID IN (:groupIds)
+            """, nativeQuery = true)
+    List<Word> getSynonymsByGroupIds(Set<UUID> groupIds);
 }
