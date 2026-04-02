@@ -1,9 +1,10 @@
-package com.synonyms.task.exception.controller;
+package com.synonyms.task.exception.handler;
 
 
 import com.synonyms.task.exception.dto.ExceptionResponse;
 import com.synonyms.task.exception.model.BadRequestException;
 import com.synonyms.task.exception.model.NotFoundException;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -16,6 +17,13 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ExceptionResponse> handleBadRequestException(BadRequestException e) {
         return buildResponseEntity(HttpStatus.BAD_REQUEST, e.getMessage());
     }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<ExceptionResponse> handleConstraintViolationException(ConstraintViolationException e) {
+        String message = e.getConstraintViolations().iterator().next().getMessage();
+        return buildResponseEntity(HttpStatus.BAD_REQUEST, message);
+    }
+
 
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<ExceptionResponse> handleNotFoundException(NotFoundException e) {

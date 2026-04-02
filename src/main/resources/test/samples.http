@@ -1,10 +1,31 @@
+# Get all words with synonyms
+
 ### Get the first page of synonyms with a limit of 20 (default value)
-GET http://localhost:8080/words/synonyms
+GET {{baseUrl}}/words/synonyms
+
+### Get the last page of synonyms with a limit of 58 elements (total number is 59)
+GET {{baseUrl}}/words/synonyms?limit=58
+
+### Get error when trying to get more than 100 synonyms
+GET {{baseUrl}}/words/synonyms?limit=101
+
+### Get error when trying to get less than 1 synonym
+GET {{baseUrl}}/words/synonyms?limit=0
+
+### Get the last page of synonyms with a limit of 30 after the cursor "97852e89-3a74-4a53-8f46-915244e7f70a"
+GET {{baseUrl}}/words/synonyms?
+    cursor=97852e89-3a74-4a53-8f46-915244e7f70a
+    &limit=30
 
 
+# Get synonyms for a specific word
 
-### Get the last page of synonyms with a limit of 50
-GET http://localhost:8080/words/synonyms?
-    cursor=5f5cddd9-1064-46e3-8070-d1a672b9adce
-    &limit=50
+### Get synonyms for the word "happy"
+GET http://localhost:8080/words/happy/synonyms
+
+### Get synonyms for unexisting word "xyz"
+GET http://localhost:8080/words/xyz/synonyms
+
+### Get synonyms for space symbol " "
+GET http://localhost:8080/words/%20/synonyms
 
