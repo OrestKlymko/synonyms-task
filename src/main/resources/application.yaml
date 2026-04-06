@@ -15,4 +15,6 @@ spring:
     username: sa
     password:
 server:
+  servlet:
+    context-path: /api
   port: 8080
